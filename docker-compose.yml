@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+
+  sqlserver:
+
+    image: mcr.microsoft.com/mssql/server:2022-latest
+
+    container_name: transactionservice-sql
+
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "SqlDocker_010826!"
+
+    ports:
+      - "1433:1433"
+
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+volumes:
+
+  sqlserver_data:
