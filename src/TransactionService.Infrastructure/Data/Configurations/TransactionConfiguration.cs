@@ -35,6 +35,8 @@ namespace TransactionService.Infrastructure.Data.Configurations
             builder.HasIndex(x => x.UserId);
 
             builder.HasIndex(x => x.Type);
+
+            builder.HasIndex(x => x.Amount);
         }
     }
 }

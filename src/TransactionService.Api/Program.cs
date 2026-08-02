@@ -1,5 +1,4 @@
-
-using TransactionService.Infrastructure.Extensions;
+using TransactionService.Api.Extensions;
 
 namespace TransactionService.Api
 {
@@ -14,7 +13,8 @@ namespace TransactionService.Api
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddInfrastructure(builder.Configuration);
+
+            builder.Services.AddApplicationServices(builder.Configuration);
 
             var app = builder.Build();
 
@@ -24,11 +24,11 @@ namespace TransactionService.Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseCustomExceptionHandler();
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
-
+            // app.UseAuthorization();
 
             app.MapControllers();
 
