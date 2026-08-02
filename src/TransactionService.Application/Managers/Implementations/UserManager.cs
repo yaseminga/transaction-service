@@ -62,6 +62,7 @@ namespace TransactionService.Application.Managers.Implementations
 
             return _mapper.Map<UserResponse>(user);
         }
+
         public async Task DeleteAsync(string id)
         {
             var user = await _userRepository.GetByIdAsync(id);
