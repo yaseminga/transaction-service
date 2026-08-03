@@ -4,6 +4,9 @@ using TransactionService.Application.Managers.Interfaces;
 
 namespace TransactionService.Api.Controllers
 {
+    /// <summary>
+    /// Provides endpoints for managing users.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
@@ -15,6 +18,10 @@ namespace TransactionService.Api.Controllers
             _userManager = userManager;
         }
 
+        /// <summary>
+        /// Retrieves all users.
+        /// </summary>
+        /// <returns>The user list.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserResponse>>> GetAll()
         {
@@ -23,6 +30,11 @@ namespace TransactionService.Api.Controllers
             return Ok(users);
         }
 
+        /// <summary>
+        /// Retrieves a user by identifier.
+        /// </summary>
+        /// <param name="id">The unique identifier of the user.</param>
+        /// <returns>The requested user.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<UserResponse>> GetById(string id)
         {
@@ -31,6 +43,11 @@ namespace TransactionService.Api.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// Creates a new user.
+        /// </summary>
+        /// <param name="request">User information.</param>
+        /// <returns>The created user.</returns>
         [HttpPost]
         public async Task<ActionResult<UserResponse>> Create(CreateUserRequest request)
         {
@@ -39,6 +56,12 @@ namespace TransactionService.Api.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// Updates an existing user.
+        /// </summary>
+        /// <param name="id">The unique identifier of the user.</param>
+        /// <param name="request">The updated user information.</param>
+        /// <returns>The updated user.</returns>
         [HttpPut("{id}")]
         public async Task<ActionResult<UserResponse>> Update(
         string id,
@@ -49,6 +72,10 @@ namespace TransactionService.Api.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// Deletes a user.
+        /// </summary>
+        /// <param name="id">The unique identifier of the user.</param>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
